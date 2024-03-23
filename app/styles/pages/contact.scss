@@ -1,0 +1,128 @@
+@use '../theme';
+
+
+.main.container {
+  .contact.container {
+    width: 80%;
+    //overflow: hidden;
+    //box-sizing: content-box;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      //box-sizing: content-box;
+      gap: 1rem;
+
+      div {
+        padding: 0 !important;
+      }
+      .Type {
+        width: 50%;
+        position: relative;
+
+        button {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+          align-items: center;
+        }
+        .dropdown {
+          position: absolute;
+          width: 100%;
+          //box-sizing: content-box;
+
+          outline: 1px solid rgba(255, 255, 255, 0.50);
+          //border: 0.2rem solid transparent;
+
+          display: flex;
+          flex-direction: column;
+          gap: 0.2rem;
+
+          transition: height 0.4s ease-in-out;
+
+          height: 0;
+          background: theme.$background;
+          overflow: hidden;
+
+          &.active {
+            height: 9.2rem;
+          }
+
+          button {
+            padding-block: 0.7rem;
+          }
+        }
+      }
+      .row {
+        display: flex;
+        flex-direction: row;
+        //justify-content: space-between;
+        width: 100%;
+        gap: 1rem;
+
+        &._2 {
+          h2 {
+            width: auto !important;
+            padding-inline: 1rem;
+            color: rgba(255, 255, 255, 0.5) !important;
+          }
+          a {
+            text-align: center;
+            &:hover {
+              background-color: theme.$backgroundText;
+            }
+          }
+        }
+      }
+      label {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+      textarea {
+        height: 10rem;
+        resize: vertical;
+      }
+      button {
+        &:hover {
+          background: theme.$backgroundText !important;
+        }
+        &:active {
+          background: rgba(255, 255, 255, 0.07);
+        }
+      }
+      input, textarea, button, h2, a, select {
+        background: rgba(255, 255, 255, 0.07);
+        border: none;
+        outline: none;
+        box-sizing: border-box;
+
+        margin: 0;
+        width: 100%;
+        padding: 0.6rem;
+
+        text-decoration: none;
+        font-size: 1.2rem;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 400;
+
+        caret-color: theme.$text !important;
+        color: theme.$text !important;
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 600px) {
+  .main.container {
+    .contact.container {
+      form {
+        .row {
+          flex-direction: column;
+        }
+      }
+    }
+  }
+}
+

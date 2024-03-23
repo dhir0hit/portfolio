@@ -1,0 +1,30 @@
+@use '../theme';
+
+.main.container {
+  .error.container {
+    * {
+
+      color: theme.$text;
+      font-weight: 500;
+      font-family: 'Montserrat', sans-serif;
+    }
+    a {
+      font-size: 1.4rem;
+    }
+    .log {
+      height: 15rem;
+      width: 70%;
+      padding-block: 0.8rem;
+    }
+    .code {
+      padding: 0;
+      margin: 0;
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.50);
+      span {
+        font-style: normal;
+        font-weight: 600;
+      }
+    }
+  }
+}

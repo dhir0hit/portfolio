@@ -1,0 +1,259 @@
+@use 'theme';
+
+$navButtonBlur: 15px;
+
+@keyframes lightBulb {
+  0% {
+    text-shadow: 0 0 $navButtonBlur theme.$highlight;
+  }
+  2% {
+    text-shadow: 0 0 $navButtonBlur transparent;
+  }
+  6% {
+    text-shadow: 0 0 $navButtonBlur theme.$highlight;
+  }
+  10% {
+    text-shadow: 0 0 $navButtonBlur transparent;
+  }
+  30% {
+    text-shadow: 0 0 $navButtonBlur theme.$highlight;
+  }
+  50% {
+    text-shadow: 0 0 $navButtonBlur transparent;
+  }
+  55% {
+    text-shadow: 0 0 $navButtonBlur theme.$highlight;
+  }
+  100% {
+    text-shadow: 0 0 $navButtonBlur theme.$highlight;
+  }
+}
+
+
+button.hamburger {
+  width: 60px;
+  height: 40px;
+
+  background: transparent !important;
+  outline: none !important;
+  border: none;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+
+  div {
+    height: 4px;
+    background-color: #C27424;
+    transition: width 0.2s linear,  transform 0.2s linear, rotate 0.2s linear 0.2001s;
+
+    &:nth-child(1) {
+      margin-bottom: -4px;
+      transform: translateY(-15px);
+      width: 100%;
+    }
+    &:nth-child(2) {
+      width: 100%;
+    }
+    &:nth-child(3) {
+      margin-top: -4px;
+      transform: translateY(15px);
+      width: 100%;
+    }
+  }
+}
+
+button.hamburger.active {
+  justify-content: center;
+  position: relative;
+  div {
+    width: 100% !important;
+
+    &:nth-child(1) {
+      transform: translateY(0);
+      //transform: rotate(45deg) ;
+      rotate: 45deg;
+    }
+    &:nth-child(2) {
+      width: 0!important;
+    }
+    &:nth-child(3) {
+      rotate: -45deg;
+      transform: translateY(0);
+      //transform: rotate(-45deg);
+    }
+  }
+}
+
+nav {
+  top: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  z-index: 10;
+
+  div {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .resume {
+      text-decoration: none;
+      h1 {
+        color: theme.$highlightFade;
+        animation: linear 2s  2s lightBulb;
+      }
+
+      &:hover {
+        h1 {
+          text-shadow: 0 0 $navButtonBlur theme.$highlight;
+        }
+      }
+    }
+  }
+}
+
+
+.sideBar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: -45vw;
+  width: 40vw;
+  z-index: 2;
+
+  background-color: theme.$background;
+  box-shadow: 6px 0 5em theme.$highlightFade;
+
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-evenly;
+
+  transition: left 1s ease-in-out, box-shadow 0.2s ease-in;
+
+  ul {
+    list-style-type: none;
+
+    padding: 0;
+    margin: 0;
+    padding-right: 6rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 3rem;
+
+    li {
+
+      a {
+        padding: 0;
+        margin: 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        text-decoration: none;
+
+        //color: theme.$text;
+
+        h2 {
+          color: theme.$text;
+          //width: 50%;
+          overflow: visible;
+          font-weight: 300;
+          //font-size: 2rem;
+          padding: 0;
+          margin: 0;
+          text-align: left;
+
+
+          &:nth-child(1) {
+            color: theme.$backgroundText;
+          }
+          &:nth-child(2) {
+            //position: fixed;
+
+          }
+        }
+
+        &:hover {
+          h2 {
+            &:nth-child(1) {
+              color: theme.$highlightFade;
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+  .contact-icons {
+    //background-color: red;
+    width: 100%;
+
+
+    div {
+      padding-left: 6rem;
+
+      a {
+        background-color: theme.$backgroundText;
+
+        svg {
+          margin: 1rem;
+          font-size: 30px !important;
+          transition: transform 0.2s ease-in-out;
+          transform: translateY(0);
+        }
+
+        &:hover {
+          background-color: theme.$highlightFade;
+
+          svg {
+            transform: translateY(-5px);
+          }
+        }
+
+        &:active {
+          svg {
+            transform: translateY(0);
+          }
+        }
+      }
+    }
+  }
+}
+
+.sideBar.active {
+  left: 0!important;
+}
+
+
+@media screen and (max-width: 1000px) {
+  nav {
+    padding-inline: 2rem;
+  }
+  .sideBar {
+    width: 100vw;
+    left: -120vw;
+
+    ul {
+      padding-right: 4rem;
+    }
+  }
+}
+
